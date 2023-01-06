@@ -77,8 +77,8 @@ score.speed(0)
 score.color("white")
 score.penup()
 score.hideturtle()
-score.goto(0,200)
-score.write("0  0", align="center", font=("Arial", 80, "bold"))
+score.goto(0,180)
+score.write("0    0", align="center", font=("Arial", 100, "bold"))
 
 #Keyboard functions to control paddles
 def left_pad_up():
@@ -128,14 +128,14 @@ while True:
         ball.dy *= -1
         player_one += 1
         score.clear()
-        score.write("{}  {}".format(player_one, player_two), align="center",font=("Arial", 80, "bold"))
+        score.write("{}    {}".format(player_one, player_two), align="center",font=("Arial", 100, "bold"))
  
     if ball.xcor() < -500:
         ball.goto(0, 0)
-        ball.dy *= -1
-        player_one += 1
+        ball.dy *= 1
+        player_two += 1
         score.clear()
-        score.write("{}  {}".format(player_one, player_two), align="center",font=("Arial", 80, "bold"))
+        score.write("{}    {}".format(player_one, player_two), align="center",font=("Arial", 100, "bold"))
  
 	# Paddle ball collision
     if (ball.xcor() > 360 and ball.xcor() < 370) and (ball.ycor() < right_pad.ycor()+40 and ball.ycor() > right_pad.ycor()-40):
