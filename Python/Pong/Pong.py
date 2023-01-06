@@ -1,11 +1,43 @@
 #Import libraries
 import turtle
 
+SCREEN_WIDTH = 1000
+SCREEN_HEIGHT = 1000
+
 #Create screen
 screen = turtle.Screen()
 screen.title("Pong")
 screen.bgcolor("black")
-screen.setup(width=1000, height=1000)
+screen.setup(SCREEN_WIDTH, SCREEN_HEIGHT)
+
+#Create top line
+top_line = turtle.Turtle()
+top_line.shape("square")
+top_line.color("white")
+top_line.shapesize(stretch_wid=1, stretch_len=50)
+top_line.penup()
+top_line.goto(0,300)
+
+#Create bottom line
+bottom_line = turtle.Turtle()
+bottom_line.shape("square")
+bottom_line.color("white")
+bottom_line.shapesize(stretch_wid=1, stretch_len=50)
+bottom_line.penup()
+bottom_line.goto(0,-300)
+
+#Create dividing line
+div_line = turtle.Turtle()
+div_line.penup()
+div_line.goto(0,300)
+div_line.seth(270)
+div_line.hideturtle()
+
+for i in range(11):
+    div_line.penup()
+    div_line.forward(50)
+    div_line.dot(10,"white")
+    div_line.pendown()
 
 #Create left paddle
 left_pad = turtle.Turtle()
@@ -45,8 +77,8 @@ score.speed(0)
 score.color("white")
 score.penup()
 score.hideturtle()
-score.goto(0,260)
-score.write("Player 1 : 0    Player 2 : 0", align="center", font=("Courier", 24, "normal"))
+score.goto(0,200)
+score.write("0  0", align="center", font=("Arial", 80, "bold"))
 
 #Keyboard functions to control paddles
 def left_pad_up():
@@ -96,14 +128,14 @@ while True:
         ball.dy *= -1
         player_one += 1
         score.clear()
-        score.write("Player 1 : {}    Player 2 : {}".format(player_one, player_two), align="center",font=("Courier", 24, "normal"))
+        score.write("{}  {}".format(player_one, player_two), align="center",font=("Arial", 80, "bold"))
  
     if ball.xcor() < -500:
         ball.goto(0, 0)
         ball.dy *= -1
         player_one += 1
         score.clear()
-        score.write("Player 1 : {}    Player 2 : {}".format(player_one, player_two), align="center",font=("Courier", 24, "normal"))
+        score.write("{}  {}".format(player_one, player_two), align="center",font=("Arial", 80, "bold"))
  
 	# Paddle ball collision
     if (ball.xcor() > 360 and ball.xcor() < 370) and (ball.ycor() < right_pad.ycor()+40 and ball.ycor() > right_pad.ycor()-40):
